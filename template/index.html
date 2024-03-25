@@ -1,1 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Analysis Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+        }
+        .logo img {
+            margin-bottom: 30px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            margin-bottom: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff4434;
+            color: white;
+            cursor: pointer;
+            width: 85%;
+        }
+        button:hover {
+            background-color: #e64a19;
+        }
+        /* Styles for the result text */
+        #result {
+            margin-top: 20px;
+        }
+        /* Additional styles for loading image */
+        #loadingImage {
+            display: none;
+            margin-top: 20px;
+        }
+        #outputBox {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 20px;
+            white-space: pre-wrap; /* respects both spaces and line breaks */
+            text-align: left; /* Align text to the left */
+            height: 300px; /* Set a fixed height */
+            overflow-y: auto; /* Make it scrollable */
+            max-width: 90%; /* Limit maximum width */
+            margin: 20px auto; /* Centering the box */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='watt_research_integrated.png') }}" alt="Company Logo" style="max-width: 100%; height: auto;">
+        </div>
+        <h1>Enter the company name you want to analyze:</h1>
+        <form id="companyForm">
+            <div class="input-group">
+                <input type="text" id="companyName" name="company" placeholder="Company Name" required>
+                <button type="submit">Analyze</button>
+            </div>
+        </form>
+        <!-- Loading image, initially hidden -->
+        <img id="loadingImage" src="{{ url_for('static', filename='loading.gif') }}" alt="Loading..." style="width: 100px; height: 100px; display: none; margin: 0 auto;" />
+        <div id="result"></div>
+        <div id="outputBox" style="display: none;"></div> <!-- This is where the output will be shown -->
+    </div>
+    <script src="{{ url_for('static', filename='frontend.js') }}"></script>
+</body>
+</html>
 
